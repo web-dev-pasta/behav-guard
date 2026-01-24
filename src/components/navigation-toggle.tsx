@@ -31,7 +31,7 @@ function NavigationToggle() {
       >
         <Button
           variant="outline"
-          className="focus-visible:border-border rounded-t-none focus-visible:ring-0"
+          className="focus-visible:border-input rounded-t-none focus-visible:ring-0 dark:border-t-0"
           size="icon"
           onClick={() => setOpen((prev) => !prev)}
         >

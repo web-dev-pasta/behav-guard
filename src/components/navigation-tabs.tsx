@@ -20,14 +20,14 @@ function NavigationItems({ tabs }: NavigationTabsProps) {
         <Link
           key={id}
           className={cn(
-            "flex items-center justify-center gap-2 p-4",
-            id > 2 && "border-t",
-            id % 2 === 0 && "border-l",
+            "flex items-center justify-center gap-2 p-2 max-sm:border-b max-sm:last:border-b-0 sm:p-4",
+            id > 2 && "sm:border-t",
+            id % 2 === 0 && "sm:border-l",
           )}
           href={href}
         >
           <span>{icon}</span>
-          <span>{label}</span>
+          <span className="max-sm:text-sm">{label}</span>
         </Link>
       ))}
     </>
