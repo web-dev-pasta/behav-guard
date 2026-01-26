@@ -1,5 +1,4 @@
 "use client";
-import { ResponsiveContainer } from "recharts";
 import Chart from "./chart";
 import BoxWrapper from "../box-wrapper";
 import { attackTypes } from "@/constants/constants";
@@ -7,9 +6,7 @@ function AttackTypes() {
   return (
     <BoxWrapper className="space-y-2">
       <p className="text-center">Attack Types</p>
-      <ResponsiveContainer width="100%" height={200}>
-        <Chart attackTypes={attackTypes} />
-      </ResponsiveContainer>
+      <Chart attackTypes={attackTypes} />
       <div className="mt-4 space-y-2">
         {attackTypes.map((type) => (
           <div
