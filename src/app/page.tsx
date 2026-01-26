@@ -1,5 +1,11 @@
+import Overview from "@/components/dashboard/overview";
+
 function Dashboard() {
-  return <div className="page-container"></div>;
+  return (
+    <>
+      <Overview />
+    </>
+  );
 }
 
 export default Dashboard;

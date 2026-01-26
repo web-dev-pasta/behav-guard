@@ -21,7 +21,7 @@ function NavigationToggle() {
   }, [menuRef]);
 
   return (
-    <div className="relative mx-auto w-full max-w-317.5">
+    <div className="relative mx-auto w-full max-w-7xl">
       <div
         ref={menuRef}
         className={cn(
@@ -31,14 +31,14 @@ function NavigationToggle() {
       >
         <Button
           variant="outline"
-          className="focus-visible:border-input rounded-t-none focus-visible:ring-0 dark:border-t-0"
+          className="focus-visible:border-input sticky top-0 rounded-t-none focus-visible:ring-0 dark:border-t-0"
           size="icon"
           onClick={() => setOpen((prev) => !prev)}
         >
           <Settings className={"h-[1.2rem] w-[1.2rem]"} />
         </Button>
       </div>
-      <NavigationMenu open={open} setOpen={setOpen} />
+      <NavigationMenu open={open} />
     </div>
   );
 }

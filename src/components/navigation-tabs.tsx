@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
-
 interface Tab {
   id: number;
   icon: React.ReactNode;
@@ -22,7 +21,7 @@ function NavigationItems({ tabs }: NavigationTabsProps) {
           className={cn(
             "flex items-center justify-center gap-2 p-2 max-sm:border-b max-sm:last:border-b-0 sm:p-4",
             id > 2 && "sm:border-t",
-            id % 2 === 0 && "sm:border-l",
+            id % 2 === 1 && "sm:border-r",
           )}
           href={href}
         >

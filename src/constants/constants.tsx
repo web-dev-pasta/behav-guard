@@ -5,8 +5,13 @@ import {
   Power,
   Search,
   Settings,
+  Shield,
+  Activity,
+  TrendingUp,
+  Zap,
 } from "lucide-react";
-export const tabs = [
+
+export const navigationTabs = [
   {
     id: 1,
     icon: <LayoutDashboard className="size-4.5 sm:size-6" />,
@@ -44,3 +49,36 @@ export const tabs = [
     href: "/configuration",
   },
 ];
+
+export const overviewData = (score: number) => {
+  return [
+    {
+      label: "Risk Score",
+      score: score,
+      description: "out of 100",
+      icon: Shield,
+      isRisk: true,
+    },
+    {
+      label: "Active Sessions",
+      score: "1,247",
+      description: "↑ 12% from avg",
+      icon: Activity,
+      iconColor: "#00D4FF",
+    },
+    {
+      label: "Requests/sec",
+      score: "9,842",
+      description: "avg latency: 28ms",
+      icon: Zap,
+      iconColor: "#00C896",
+    },
+    {
+      label: "False Positive Rate",
+      score: "0.18%",
+      description: "1.8 per 1000 req",
+      icon: TrendingUp,
+      iconColor: "#FFB800",
+    },
+  ];
+};

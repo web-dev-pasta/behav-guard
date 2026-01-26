@@ -9,9 +9,9 @@ import Link from "next/link";
 function Header() {
   return (
     <header className="relative border-b px-4">
-      <div className="page-container dark:bg-navy relative z-99 flex items-center justify-between border-x bg-white px-2 py-4 md:px-4">
+      <div className="page-container dark:bg-navy relative z-99 flex items-center justify-between border-x bg-white px-2 py-2 md:px-4 md:py-4">
         <div className="image">
-          <Link href="/">
+          <Link href="/" className="outline-0">
             <Image
               className="w-30 md:w-40 dark:hidden"
               src={logoDark}
