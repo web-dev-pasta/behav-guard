@@ -1,3 +1,4 @@
+import { ThreatLocation } from "@/types";
 import {
   ChartSpline,
   CircleAlert,
@@ -82,3 +83,16 @@ export const overviewData = (score: number) => {
     },
   ];
 };
+
+export const threats: ThreatLocation[] = [
+  { country: "United States", count: 145, lat: 37.0902, lng: -95.7129 },
+  { country: "China", count: 234, lat: 35.8617, lng: 104.1954 },
+  { country: "Russia", count: 187, lat: 61.524, lng: 105.3188 },
+  { country: "Brazil", count: 98, lat: -14.235, lng: -51.9253 },
+  { country: "India", count: 156, lat: 20.5937, lng: 78.9629 },
+  { country: "Germany", count: 67, lat: 51.1657, lng: 10.4515 },
+  { country: "France", count: 54, lat: 46.2276, lng: 2.2137 },
+  { country: "United Kingdom", count: 78, lat: 55.3781, lng: -3.436 },
+];
+
+export const maxCount = Math.max(...threats.map((t) => t.count));

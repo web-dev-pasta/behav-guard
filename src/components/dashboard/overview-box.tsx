@@ -1,5 +1,6 @@
 import React from "react";
 import { formatScore, getRiskColor } from "@/lib/helper";
+import BoxWrapper from "../box-wrapper";
 
 function OverviewBox({ item }: any) {
   const isNumber = typeof item.score === "number";
@@ -11,9 +12,9 @@ function OverviewBox({ item }: any) {
   const Icon = item.icon;
 
   return (
-    <div
+    <BoxWrapper
       key={item.label}
-      className="space-y-2 rounded-xl border border-white/10 bg-white/5 p-4 shadow md:space-y-3"
+      className="space-y-2 md:space-y-3"
     >
       <div className="flex items-center justify-between">
         <p className="text-sm text-black dark:text-[#8892B0]">{item.label}</p>
@@ -34,7 +35,7 @@ function OverviewBox({ item }: any) {
           {item.description}
         </span>
       </div>
-    </div>
+    </BoxWrapper>
   );
 }
 

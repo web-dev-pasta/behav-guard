@@ -13,7 +13,7 @@ function Overview() {
   const data = overviewData(score);
 
   return (
-    <section className="mt-10 px-4">
+    <section className="my-10 px-4">
       <div className="page-container grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
         {data.map((item) => (
           <OverviewBox key={item.label} item={item} />
