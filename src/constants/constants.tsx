@@ -96,3 +96,19 @@ export const threats: ThreatLocation[] = [
 ];
 
 export const maxCount = Math.max(...threats.map((t) => t.count));
+
+export const detectionData = [
+  { name: "Session Behavior", value: 40, color: "#00D4FF" },
+  { name: "Contract Validation", value: 30, color: "#00C896" },
+  { name: "Attack Classification", value: 15, color: "#FFB800" },
+  { name: "Mimic Guard", value: 5, color: "#FF3366" },
+  { name: "Other", value: 10, color: "#8892B0" },
+];
+
+export const attackTypes = [
+  { name: "SQL Injection", value: 45, color: "#FF3366" },
+  { name: "XSS", value: 25, color: "#FFB800" },
+  { name: "CSRF", value: 15, color: "#00D4FF" },
+  { name: "Path Traversal", value: 10, color: "#00C896" },
+  { name: "Other", value: 5, color: "#8892B0" },
+];

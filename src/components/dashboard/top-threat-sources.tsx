@@ -19,7 +19,7 @@ function TopThreatScources() {
                   />
                 </div>
               </div>
-              <span className="ml-2 text-sm text-[#8892B0]">
+              <span className="ml-2 text-sm text-[#8892B0] font-semibold">
                 {threat.count}
               </span>
             </div>

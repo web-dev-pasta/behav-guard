@@ -16,10 +16,9 @@ function LiveAttack() {
           <p>Live Attack Feed</p>
         </div>
         <Button
-          variant="secondary"
+          variant="outline"
           size="sm"
           onClick={() => setIsPaused(!isPaused)}
-          className="border-white/10 hover:bg-white/5"
         >
           {isPaused ? (
             <Play className="h-4 w-4" />

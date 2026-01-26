@@ -1,4 +1,5 @@
 import Overview from "@/components/dashboard/overview";
+import Statistics from "@/components/dashboard/statistics";
 import Threats from "@/components/dashboard/threats";
 
 function Dashboard() {
@@ -6,6 +7,7 @@ function Dashboard() {
     <>
       <Overview />
       <Threats />
+      <Statistics />
     </>
   );
 }

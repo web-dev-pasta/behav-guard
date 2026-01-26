@@ -148,7 +148,7 @@ export function AttackFeed({ isPaused }: { isPaused: boolean }) {
         {attacks.map((attack) => (
           <BoxWrapper
             key={attack.id}
-            className="cursor-pointer rounded-lg border border-white/10 bg-white/5 p-3 transition-colors hover:bg-white/10"
+            className="cursor-pointer rounded-lg border bg-white/5 p-3 transition-colors hover:bg-white/10 dark:border-white/10"
           >
             <div className="flex items-start justify-between gap-3 max-sm:flex-col max-sm:items-center">
               <div className="min-w-0 flex-1">
