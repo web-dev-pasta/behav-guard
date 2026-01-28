@@ -1,7 +1,13 @@
-import React from "react";
+// import InvestigationView from "@/components/investigation/attack";
+
+import { InvestigationView } from "@/components/investigation/attack";
 
 function InvestigationPage() {
-  return <div>InvestigationPage</div>;
+  return (
+    <>
+      <InvestigationView />
+    </>
+  );
 }
 
 export default InvestigationPage;

@@ -22,3 +22,41 @@ export interface ThreatLocation {
   lat: number;
   lng: number;
 }
+
+export type AttackSeverity = "low" | "medium" | "high" | "critical";
+export type AttackStatus = "allowed" | "challenged" | "blocked";
+
+export interface Attack {
+  id: string;
+  timestamp: string;
+  ip: string;
+  country: string;
+  type: string;
+  severity: AttackSeverity;
+  riskScore: number;
+  endpoint: string;
+  status: AttackStatus;
+}
+export interface SessionTimelineItem {
+  time: string;
+  requests: number;
+  anomaly: number;
+}
+export interface AttackDetailsProps {
+  selectedAttack: Attack;
+  sessionTimeline: SessionTimelineItem[];
+  rawRequest: string;
+  rawResponse: string;
+}
+export interface GeneratePdfParams extends AttackDetailsProps{}
+export interface RecentAttacksProps {
+  selectedAttack: Attack;
+  setSelectedAttack: React.Dispatch<React.SetStateAction<Attack>>;
+}
+export interface FilterAttacksProps extends RecentAttacksProps {
+  filteredData: Attack[];
+}
+export interface SearchAttacksProps {
+  filteredData: Attack[];
+  setFilteredData: React.Dispatch<React.SetStateAction<Attack[]>>;
+}
