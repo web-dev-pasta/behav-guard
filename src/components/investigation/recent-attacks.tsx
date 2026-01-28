@@ -4,7 +4,7 @@ import { Attack, RecentAttacksProps } from "@/types";
 import BoxWrapper from "../box-wrapper";
 import SearchAttacks from "@/components/investigation/search-attacks";
 import FilterAttacks from "@/components/investigation/filter-attacks";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { mockAttacks } from "@/constants/constants";
 function RecentAttacks({
   selectedAttack,
@@ -17,10 +17,12 @@ function RecentAttacks({
         <Search className="h-5 w-5 text-[#00D4FF]" />
         <p className="translate-y-px">Recent Attacks</p>
       </div>
-      <SearchAttacks
-        filteredData={filteredData}
-        setFilteredData={setFilteredData}
-      />
+      <Suspense>
+        <SearchAttacks
+          filteredData={filteredData}
+          setFilteredData={setFilteredData}
+        />
+      </Suspense>
       <FilterAttacks
         selectedAttack={selectedAttack}
         setSelectedAttack={setSelectedAttack}

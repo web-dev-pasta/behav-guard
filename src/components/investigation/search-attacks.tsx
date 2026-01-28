@@ -1,11 +1,12 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import { mockAttacks } from "@/constants/constants";
-import { Attack, SearchAttacksProps } from "@/types";
+import { SearchAttacksProps } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { debounce, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
-function SearchAttacks({ filteredData, setFilteredData }: SearchAttacksProps) {
+function SearchAttacks({ setFilteredData }: SearchAttacksProps) {
   const paramsValue = useSearchParams().get("q");
   const [searchValue, setSearchValue] = useQueryState("q", {
     defaultValue: "",
