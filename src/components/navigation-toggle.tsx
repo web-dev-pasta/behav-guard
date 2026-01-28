@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Settings } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import NavigationMenu from "./navigation-menu";
 
 function NavigationToggle() {
@@ -38,7 +38,9 @@ function NavigationToggle() {
           <Settings className={"h-[1.2rem] w-[1.2rem]"} />
         </Button>
       </div>
-      <NavigationMenu open={open} />
+      <Suspense>
+        <NavigationMenu open={open} />
+      </Suspense>
     </div>
   );
 }

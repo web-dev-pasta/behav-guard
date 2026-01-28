@@ -2,11 +2,11 @@ import { Session } from "@/types";
 
 function SessionData({ selectedSession }: { selectedSession: Session }) {
   const removedKeys = ["ip", "startTime"] as const;
-  const status = {
+  const statusStyles: Record<Session["status"], string> = {
     blocked: "bg-[#f36]",
     challenged: "bg-[#ffb800]",
     allowed: "bg-[#00c896]",
-  } as const;
+  };
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3 sm:gap-4">
       {Object.entries(selectedSession)
@@ -21,7 +21,13 @@ function SessionData({ selectedSession }: { selectedSession: Session }) {
           >
             <p className="text-muted-foreground text-sm capitalize">{key}</p>
             <p
-              className={`text-sm font-medium text-black dark:text-white ${key === "status" && `w-fit rounded-md px-2 text-white ${status[value]}`}`}
+              className={`text-sm font-medium text-black dark:text-white ${
+                key === "status"
+                  ? `w-fit rounded-md px-2 text-white ${
+                      statusStyles[value as Session["status"]]
+                    }`
+                  : ""
+              }`}
             >
               {String(value)}
             </p>

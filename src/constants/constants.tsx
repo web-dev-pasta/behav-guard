@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Attack, ThreatLocation } from "@/types";
+import { Attack, Session, ThreatLocation } from "@/types";
 import {
   ChartSpline,
   CircleAlert,
@@ -567,7 +567,7 @@ export const tabs = [
   { value: "raw", label: "Raw Data" },
 ];
 
-export const sessions = [
+export const sessions: Session[] = [
   {
     id: "SES-001",
     ip: "192.168.1.105",
@@ -604,4 +604,13 @@ export const sessions = [
     anomalyScore: 12,
     status: "allowed",
   },
+];
+
+export const endpointData = [
+  { endpoint: "/api/users", normal: 120, suspicious: 45, current: 165 },
+  { endpoint: "/api/search", normal: 85, suspicious: 12, current: 97 },
+  { endpoint: "/api/data", normal: 95, suspicious: 8, current: 103 },
+  { endpoint: "/api/login", normal: 45, suspicious: 2, current: 47 },
+  { endpoint: "/admin/dashboard", normal: 5, suspicious: 78, current: 83 },
+  { endpoint: "/api/payments", normal: 35, suspicious: 3, current: 38 },
 ];

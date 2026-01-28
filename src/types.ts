@@ -61,6 +61,8 @@ export interface SearchAttacksProps {
   setFilteredData: React.Dispatch<React.SetStateAction<Attack[]>>;
 }
 
+export type SessionStatus = "blocked" | "challenged" | "allowed";
+
 export interface Session {
   id: string;
   ip: string;
@@ -68,5 +70,5 @@ export interface Session {
   duration: string;
   requests: number;
   anomalyScore: number;
-  status: string;
+  status: SessionStatus;
 }
