@@ -1,7 +1,11 @@
-import React from "react";
+import AnalysisSection from "@/components/analysis/analysis-section";
 
 function AnalysisPage() {
-  return <div>AnalysisPage</div>;
+  return (
+    <>
+      <AnalysisSection />
+    </>
+  );
 }
 
 export default AnalysisPage;

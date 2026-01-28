@@ -48,7 +48,7 @@ export interface AttackDetailsProps {
   rawRequest: string;
   rawResponse: string;
 }
-export interface GeneratePdfParams extends AttackDetailsProps{}
+export interface GeneratePdfParams extends AttackDetailsProps {}
 export interface RecentAttacksProps {
   selectedAttack: Attack;
   setSelectedAttack: React.Dispatch<React.SetStateAction<Attack>>;
@@ -59,4 +59,14 @@ export interface FilterAttacksProps extends RecentAttacksProps {
 export interface SearchAttacksProps {
   filteredData: Attack[];
   setFilteredData: React.Dispatch<React.SetStateAction<Attack[]>>;
+}
+
+export interface Session {
+  id: string;
+  ip: string;
+  startTime: string;
+  duration: string;
+  requests: number;
+  anomalyScore: number;
+  status: string;
 }

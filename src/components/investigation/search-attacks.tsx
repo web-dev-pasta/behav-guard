@@ -4,12 +4,12 @@ import { mockAttacks } from "@/constants/constants";
 import { SearchAttacksProps } from "@/types";
 import { useSearchParams } from "next/navigation";
 import { debounce, useQueryState } from "nuqs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function SearchAttacks({ setFilteredData }: SearchAttacksProps) {
   const paramsValue = useSearchParams().get("q");
   const [searchValue, setSearchValue] = useQueryState("q", {
-    defaultValue: "",
+    defaultValue: paramsValue || "",
     shallow: false,
     limitUrlUpdates: debounce(300),
   });

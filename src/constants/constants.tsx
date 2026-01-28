@@ -13,42 +13,42 @@ import {
   Zap,
 } from "lucide-react";
 
-export const navigationTabs = [
+export const navigationTabs = (params: string) => [
   {
     id: 1,
     icon: <LayoutDashboard className="size-4.5 sm:size-6" />,
     label: "SOC Dashboard",
-    href: "/",
+    href: `/?${params}`,
   },
   {
     id: 2,
     icon: <Search className="size-4.5 sm:size-6" />,
     label: "Investigation",
-    href: "/investigation",
+    href: `/investigation?${params}`,
   },
   {
     id: 3,
     icon: <ChartSpline className="size-4.5 sm:size-6" />,
-    label: "Behabioral Analysis",
-    href: "/analysis",
+    label: "Behavioral Analysis",
+    href: `/analysis?${params}`,
   },
   {
     id: 4,
     icon: <CircleAlert className="size-4.5 sm:size-6" />,
     label: "Incidents",
-    href: "/incidents",
+    href: `/incidents?${params}`,
   },
   {
     id: 5,
     icon: <Power className="size-4.5 sm:size-6" />,
     label: "Performance",
-    href: "/performance",
+    href: `/performance?${params}`,
   },
   {
     id: 6,
     icon: <Settings className="size-4.5 sm:size-6" />,
     label: "Configuration",
-    href: "/configuration",
+    href: `/configuration?${params}`,
   },
 ];
 
@@ -565,4 +565,43 @@ export const tabs = [
   { value: "features", label: "Feature Importance" },
   { value: "timeline", label: "Session Timeline" },
   { value: "raw", label: "Raw Data" },
+];
+
+export const sessions = [
+  {
+    id: "SES-001",
+    ip: "192.168.1.105",
+    startTime: "14:30:12",
+    duration: "2m 15s",
+    requests: 156,
+    anomalyScore: 94,
+    status: "blocked",
+  },
+  {
+    id: "SES-002",
+    ip: "10.0.0.45",
+    startTime: "14:28:43",
+    duration: "1m 48s",
+    requests: 89,
+    anomalyScore: 78,
+    status: "blocked",
+  },
+  {
+    id: "SES-003",
+    ip: "172.16.0.88",
+    startTime: "14:25:12",
+    duration: "3m 05s",
+    requests: 124,
+    anomalyScore: 65,
+    status: "challenged",
+  },
+  {
+    id: "SES-004",
+    ip: "192.168.1.200",
+    startTime: "14:22:30",
+    duration: "5m 12s",
+    requests: 45,
+    anomalyScore: 12,
+    status: "allowed",
+  },
 ];

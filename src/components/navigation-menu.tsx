@@ -1,14 +1,17 @@
 import { cn } from "@/lib/utils";
-import React from "react";
 import { X } from "lucide-react";
 import NavigationItems from "./navigation-tabs";
 import { Button } from "./ui/button";
+import { useSearchParams } from "next/navigation";
+
 interface NavigationMenuProps {
   open: boolean;
 }
 import { navigationTabs } from "@/constants/constants";
 
 function NavigationMenu({ open }: NavigationMenuProps) {
+  const params = useSearchParams().toString();
+
   return (
     <div
       className={cn(
@@ -23,7 +26,7 @@ function NavigationMenu({ open }: NavigationMenuProps) {
       >
         <X className="h-[1.2rem] w-[1.2rem]" />
       </Button>
-      <NavigationItems tabs={navigationTabs} />
+      <NavigationItems tabs={navigationTabs(params)} />
     </div>
   );
 }
