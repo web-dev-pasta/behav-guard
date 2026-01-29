@@ -1,5 +1,4 @@
 "use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDarkMode } from "@/hooks/use-dark-mode";
 import { TrendingUp } from "lucide-react";
 import {
@@ -22,7 +21,7 @@ function ParameterVariations() {
     uniqueValues: Math.floor(Math.random() * 10) + 5 + (i > 20 ? 15 : 0),
   }));
   return (
-    <BoxWrapper>
+    <BoxWrapper className="space-y-4">
       <p className="font-bold">Parameter Variations</p>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={parameterData}>

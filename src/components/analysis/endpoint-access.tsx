@@ -17,7 +17,7 @@ import BoxWrapper from "../box-wrapper";
 function EndpointAccess() {
   const isDark = useDarkMode();
   return (
-    <BoxWrapper>
+    <BoxWrapper className="space-y-4">
       <p className="font-bold">Endpoint Access Pattern</p>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={endpointData} layout="vertical">

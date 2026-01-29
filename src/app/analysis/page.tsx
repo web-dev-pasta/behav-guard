@@ -1,6 +1,7 @@
 import BehaviouralTimeline from "@/components/analysis/behavioural-timeline";
 import EndpointSection from "@/components/analysis/endpoint-section";
 import SessionAnalysis from "@/components/analysis/session-analysis";
+import SessionComparison from "@/components/analysis/session-comparison";
 
 function AnalysisPage() {
   return (
@@ -10,6 +11,7 @@ function AnalysisPage() {
           <SessionAnalysis />
           <BehaviouralTimeline />
           <EndpointSection />
+          <SessionComparison />
         </div>
       </section>
     </>
