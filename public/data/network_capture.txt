@@ -1,0 +1,47 @@
+Frame 1: 74 bytes on wire (592 bits), 74 bytes captured (592 bits)
+Ethernet II, Src: 00:1a:2b:3c:4d:5e, Dst: 00:5e:4d:3c:2b:1a
+Internet Protocol Version 4, Src: 203.0.113.45, Dst: 10.0.0.100
+Transmission Control Protocol, Src Port: 54321, Dst Port: 443, Seq: 1, Ack: 1, Len: 20
+Secure Socket Layer
+  TLSv1.2 Record Layer: Handshake Protocol: Client Hello
+    Content Type: Handshake (22)
+    Version: TLS 1.2 (0x0303)
+    Length: 185
+    Handshake Protocol: Client Hello
+      Handshake Type: Client Hello (1)
+      Length: 181
+      Version: TLS 1.2 (0x0303)
+      Random: a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6...
+      Session ID Length: 0
+      Cipher Suites Length: 28
+      Cipher Suites (14 suites)
+      Compression Methods Length: 1
+      Compression Methods (1 method)
+      Extensions Length: 112
+      Extension: server_name (len=15)
+      Extension: extended_master_secret (len=0)
+      Extension: renegotiation_info (len=1)
+
+Frame 2: 1514 bytes on wire (12112 bits), 1514 bytes captured (12112 bits)
+Ethernet II, Src: 00:5e:4d:3c:2b:1a, Dst: 00:1a:2b:3c:4d:5e
+Internet Protocol Version 4, Src: 10.0.0.100, Dst: 203.0.113.45
+Transmission Control Protocol, Src Port: 443, Dst Port: 54321, Seq: 1, Ack: 186, Len: 1460
+[TCP segment of a reassembled PDU]
+
+Frame 3: 540 bytes on wire (4320 bits), 540 bytes captured (4320 bits)
+Ethernet II, Src: 00:1a:2b:3c:4d:5e, Dst: 00:5e:4d:3c:2b:1a
+Internet Protocol Version 4, Src: 203.0.113.45, Dst: 10.0.0.100
+Transmission Control Protocol, Src Port: 54321, Dst Port: 443, Seq: 186, Ack: 1461, Len: 486
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 125
+
+{"status":"error","message":"SQL syntax error near 'OR '1'='1'","timestamp":"2024-11-01T14:00:05Z"}
+
+Frame 4: 78 bytes on wire (624 bits), 78 bytes captured (624 bits)
+Ethernet II, Src: 00:5e:4d:3c:2b:1a, Dst: 00:1a:2b:3c:4d:5e
+Internet Protocol Version 4, Src: 10.0.0.100, Dst: 203.0.113.45
+Transmission Control Protocol, Src Port: 443, Dst Port: 54321, Seq: 1461, Ack: 672, Len: 0
+[TCP Keep-Alive]
+
+... additional frames showing attack patterns ...

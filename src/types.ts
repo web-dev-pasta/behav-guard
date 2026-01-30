@@ -72,3 +72,17 @@ export interface Session {
   anomalyScore: number;
   status: SessionStatus;
 }
+
+export interface Incident {
+  id: string;
+  title: string;
+  severity: "critical" | "high" | "medium" | "low";
+  status: "open" | "investigating" | "resolved" | "closed";
+  assignee: string;
+  created: string;
+  updated: string;
+  attackType: string;
+  affectedAssets: string[];
+  attackCount: number;
+  sourceIPs: number;
+}

@@ -3,7 +3,7 @@ import BoxWrapper from "../box-wrapper";
 
 function IncidentsOverview() {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-3 sm:gap-4">
+    <section className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-3 sm:gap-4">
       {stats.map((stat) => {
         const Icon = stat.icon;
 
@@ -11,8 +11,8 @@ function IncidentsOverview() {
           <BoxWrapper key={stat.label}>
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm text-[#8892B0]">{stat.label}</p>
-                <p className={`mt-2 text-3xl ${stat.valueClass}`}>
+                <p className="text-sm dark:text-[#8892B0]">{stat.label}</p>
+                <p className={`mt-2 text-3xl dark:${stat.valueClass}`}>
                   {stat.value}
                 </p>
               </div>
@@ -24,7 +24,7 @@ function IncidentsOverview() {
           </BoxWrapper>
         );
       })}
-    </div>
+    </section>
   );
 }
 

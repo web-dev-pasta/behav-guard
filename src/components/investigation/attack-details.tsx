@@ -31,7 +31,6 @@ import {
 import { Attack, AttackDetailsProps } from "@/types";
 import BoxWrapper from "../box-wrapper";
 import { useDarkMode } from "@/hooks/use-dark-mode";
-import jsPDF from "jspdf";
 import ExportButton from "./export-button";
 import TabList from "./tab-list";
 

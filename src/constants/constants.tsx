@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Attack, Session, ThreatLocation } from "@/types";
+import { Attack, Incident, Session, ThreatLocation } from "@/types";
 import {
   ChartSpline,
   CircleAlert,
@@ -14,6 +14,7 @@ import {
   AlertTriangle,
   Flame,
   Clock,
+  User,
 } from "lucide-react";
 
 export const navigationTabs = (params: string) => [
@@ -648,7 +649,316 @@ export const stats = [
     value: "4.2h",
     valueClass: "text-white",
     icon: Clock,
-    iconBg: "bg-white/10",
-    iconColor: "text-white",
+    iconBg: "bg-gray-200 dark:bg-white/10",
+    iconColor: "dark:text-white",
+  },
+];
+
+export const mockIncidents: Incident[] = [
+  {
+    id: "INC-2024-001",
+    title: "Coordinated SQL Injection Campaign",
+    severity: "critical",
+    status: "investigating",
+    assignee: "Sarah Chen",
+    created: "2024-11-01 14:30:00",
+    updated: "2024-11-01 14:45:00",
+    attackType: "SQL Injection",
+    affectedAssets: ["/api/users", "/api/search", "/api/data"],
+    attackCount: 156,
+    sourceIPs: 12,
+  },
+  {
+    id: "INC-2024-002",
+    title: "XSS Attack on Search Endpoint",
+    severity: "high",
+    status: "investigating",
+    assignee: "Mike Rodriguez",
+    created: "2024-11-01 13:20:00",
+    updated: "2024-11-01 14:10:00",
+    attackType: "XSS",
+    affectedAssets: ["/api/search"],
+    attackCount: 89,
+    sourceIPs: 5,
+  },
+  {
+    id: "INC-2024-003",
+    title: "CSRF Token Bypass Attempts",
+    severity: "medium",
+    status: "open",
+    assignee: "Unassigned",
+    created: "2024-11-01 12:15:00",
+    updated: "2024-11-01 12:15:00",
+    attackType: "CSRF",
+    affectedAssets: ["/api/payments"],
+    attackCount: 45,
+    sourceIPs: 3,
+  },
+  {
+    id: "INC-2024-004",
+    title: "Brute Force Login Attempts",
+    severity: "high",
+    status: "resolved",
+    assignee: "Alex Kim",
+    created: "2024-10-31 22:30:00",
+    updated: "2024-11-01 08:15:00",
+    attackType: "Brute Force",
+    affectedAssets: ["/api/login"],
+    attackCount: 234,
+    sourceIPs: 8,
+  },
+  {
+    id: "INC-2024-005",
+    title: "Path Traversal Vulnerability Scan",
+    severity: "medium",
+    status: "closed",
+    assignee: "Sarah Chen",
+    created: "2024-10-31 18:00:00",
+    updated: "2024-10-31 20:30:00",
+    attackType: "Path Traversal",
+    affectedAssets: ["/api/files"],
+    attackCount: 67,
+    sourceIPs: 2,
+  },
+  {
+    id: "INC-2024-006",
+    title: "DDoS Attack on API Gateway",
+    severity: "critical",
+    status: "investigating",
+    assignee: "Network Team",
+    created: "2024-10-31 15:45:00",
+    updated: "2024-11-01 10:20:00",
+    attackType: "DDoS",
+    affectedAssets: ["/api/gateway", "/api/*"],
+    attackCount: 12500,
+    sourceIPs: 342,
+  },
+  {
+    id: "INC-2024-007",
+    title: "Sensitive Data Exposure - API Keys",
+    severity: "high",
+    status: "open",
+    assignee: "Security Team",
+    created: "2024-10-30 09:15:00",
+    updated: "2024-10-31 16:40:00",
+    attackType: "Information Disclosure",
+    affectedAssets: ["/api/config", "/api/admin"],
+    attackCount: 23,
+    sourceIPs: 7,
+  },
+  {
+    id: "INC-2024-008",
+    title: "Credential Stuffing Attack",
+    severity: "high",
+    status: "investigating",
+    assignee: "Mike Rodriguez",
+    created: "2024-10-30 08:00:00",
+    updated: "2024-10-31 14:25:00",
+    attackType: "Credential Stuffing",
+    affectedAssets: ["/api/login", "/api/auth"],
+    attackCount: 890,
+    sourceIPs: 45,
+  },
+  {
+    id: "INC-2024-009",
+    title: "API Rate Limit Bypass",
+    severity: "medium",
+    status: "resolved",
+    assignee: "Alex Kim",
+    created: "2024-10-29 11:30:00",
+    updated: "2024-10-30 09:10:00",
+    attackType: "Rate Limit Bypass",
+    affectedAssets: ["/api/search", "/api/data"],
+    attackCount: 120,
+    sourceIPs: 4,
+  },
+  {
+    id: "INC-2024-010",
+    title: "JWT Token Manipulation",
+    severity: "critical",
+    status: "investigating",
+    assignee: "Sarah Chen",
+    created: "2024-10-28 16:20:00",
+    updated: "2024-10-29 11:45:00",
+    attackType: "JWT Attack",
+    affectedAssets: ["/api/admin", "/api/users"],
+    attackCount: 34,
+    sourceIPs: 3,
+  },
+  {
+    id: "INC-2024-011",
+    title: "XML External Entity Attack",
+    severity: "high",
+    status: "closed",
+    assignee: "Mike Rodriguez",
+    created: "2024-10-27 14:00:00",
+    updated: "2024-10-28 10:30:00",
+    attackType: "XXE",
+    affectedAssets: ["/api/upload", "/api/process"],
+    attackCount: 28,
+    sourceIPs: 6,
+  },
+  {
+    id: "INC-2024-012",
+    title: "Server-Side Request Forgery",
+    severity: "medium",
+    status: "open",
+    assignee: "Unassigned",
+    created: "2024-10-26 10:45:00",
+    updated: "2024-10-27 08:20:00",
+    attackType: "SSRF",
+    affectedAssets: ["/api/webhook", "/api/fetch"],
+    attackCount: 56,
+    sourceIPs: 9,
+  },
+  {
+    id: "INC-2024-013",
+    title: "Mass Assignment Vulnerability",
+    severity: "medium",
+    status: "resolved",
+    assignee: "Alex Kim",
+    created: "2024-10-25 13:10:00",
+    updated: "2024-10-26 15:40:00",
+    attackType: "Mass Assignment",
+    affectedAssets: ["/api/users", "/api/profile"],
+    attackCount: 78,
+    sourceIPs: 5,
+  },
+  {
+    id: "INC-2024-014",
+    title: "Insecure Deserialization Attempts",
+    severity: "critical",
+    status: "investigating",
+    assignee: "Sarah Chen",
+    created: "2024-10-24 17:30:00",
+    updated: "2024-10-25 09:15:00",
+    attackType: "Insecure Deserialization",
+    affectedAssets: ["/api/serialize", "/api/queue"],
+    attackCount: 42,
+    sourceIPs: 8,
+  },
+  {
+    id: "INC-2024-015",
+    title: "API Endpoint Enumeration",
+    severity: "low",
+    status: "open",
+    assignee: "Unassigned",
+    created: "2024-10-23 08:20:00",
+    updated: "2024-10-23 08:20:00",
+    attackType: "Enumeration",
+    affectedAssets: ["/api/*", "/admin/*"],
+    attackCount: 210,
+    sourceIPs: 3,
+  },
+  {
+    id: "INC-2024-016",
+    title: "Broken Authentication Attempts",
+    severity: "high",
+    status: "resolved",
+    assignee: "Mike Rodriguez",
+    created: "2024-10-22 11:45:00",
+    updated: "2024-10-23 14:30:00",
+    attackType: "Broken Authentication",
+    affectedAssets: ["/api/login", "/api/session"],
+    attackCount: 156,
+    sourceIPs: 12,
+  },
+  {
+    id: "INC-2024-017",
+    title: "Injection Attack - NoSQL",
+    severity: "critical",
+    status: "investigating",
+    assignee: "Sarah Chen",
+    created: "2024-10-21 19:15:00",
+    updated: "2024-10-22 10:45:00",
+    attackType: "NoSQL Injection",
+    affectedAssets: ["/api/data", "/api/query"],
+    attackCount: 67,
+    sourceIPs: 7,
+  },
+  {
+    id: "INC-2024-018",
+    title: "Business Logic Flaw Exploitation",
+    severity: "medium",
+    status: "open",
+    assignee: "Unassigned",
+    created: "2024-10-20 14:30:00",
+    updated: "2024-10-21 11:20:00",
+    attackType: "Logic Flaw",
+    affectedAssets: ["/api/cart", "/api/checkout"],
+    attackCount: 89,
+    sourceIPs: 4,
+  },
+  {
+    id: "INC-2024-019",
+    title: "Insufficient Logging Detection",
+    severity: "low",
+    status: "closed",
+    assignee: "Alex Kim",
+    created: "2024-10-19 09:00:00",
+    updated: "2024-10-20 16:45:00",
+    attackType: "Logging Bypass",
+    affectedAssets: ["/api/audit", "/api/logs"],
+    attackCount: 23,
+    sourceIPs: 2,
+  },
+  {
+    id: "INC-2024-020",
+    title: "Third-party Dependency Exploit",
+    severity: "high",
+    status: "investigating",
+    assignee: "Security Team",
+    created: "2024-10-18 12:10:00",
+    updated: "2024-10-19 08:30:00",
+    attackType: "Dependency Attack",
+    affectedAssets: ["/api/external", "/api/integration"],
+    attackCount: 145,
+    sourceIPs: 15,
+  },
+];
+
+export const overviewSections = [
+  {
+    title: "Assignee",
+    icon: User,
+    content: (incident: Incident) => (
+      <p className="text-sm text-[#8892B0]">{incident.assignee}</p>
+    ),
+  },
+  {
+    title: "Timeline",
+    icon: Clock,
+    content: (incident: Incident) => (
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between">
+          <span className="text-[#8892B0]">Created:</span>
+          <span>{incident.created}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-[#8892B0]">Last Updated:</span>
+          <span>{incident.updated}</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Affected Assets",
+    content: (incident: Incident) => (
+      <div className="space-y-1">
+        {incident.affectedAssets.map((asset, index) => (
+          <div key={index} className="text-sm text-[#00D4FF]">
+            {asset}
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    title: "Attack Sources",
+    content: (incident: Incident) => (
+      <p className="text-sm text-[#8892B0]">
+        {incident.sourceIPs} unique IP addresses detected
+      </p>
+    ),
   },
 ];

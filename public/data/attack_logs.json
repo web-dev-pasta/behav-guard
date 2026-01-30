@@ -1,0 +1,234 @@
+{
+  "metadata": {
+    "file_version": "1.2",
+    "generated_at": "2024-11-01T14:30:00Z",
+    "source": "WAF-API-Gateway",
+    "total_records": 156,
+    "time_range": "2024-11-01T14:00:00Z to 2024-11-01T14:30:00Z"
+  },
+  "log_entries": [
+    {
+      "timestamp": "2024-11-01T14:00:05.123Z",
+      "source_ip": "203.0.113.45",
+      "user_agent": "Mozilla/5.0 (compatible; python-requests/2.28.1)",
+      "request_method": "POST",
+      "request_url": "/api/users/search",
+      "request_body": "username=admin' OR '1'='1&password=test",
+      "response_code": 500,
+      "response_time_ms": 12,
+      "attack_type": "SQL_INJECTION",
+      "severity": "HIGH",
+      "rule_id": "SQLI-001",
+      "rule_description": "SQL Injection attempt via OR '1'='1 pattern",
+      "mitigation_action": "BLOCKED",
+      "session_id": "sess_abc123def456",
+      "geo_location": {
+        "country": "United States",
+        "city": "San Francisco",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:00:07.456Z",
+      "source_ip": "198.51.100.23",
+      "user_agent": "curl/7.68.0",
+      "request_method": "GET",
+      "request_url": "/api/data?query=SELECT * FROM users",
+      "request_body": null,
+      "response_code": 403,
+      "response_time_ms": 8,
+      "attack_type": "SQL_INJECTION",
+      "severity": "HIGH",
+      "rule_id": "SQLI-002",
+      "rule_description": "SQL keywords in query parameters",
+      "mitigation_action": "BLOCKED",
+      "session_id": "sess_ghi789jkl012",
+      "geo_location": {
+        "country": "Germany",
+        "city": "Berlin",
+        "latitude": 52.52,
+        "longitude": 13.405
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:02:15.789Z",
+      "source_ip": "192.0.2.67",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "request_method": "POST",
+      "request_url": "/api/search",
+      "request_body": "{\"search\": \"<script>alert('xss')</script>\"}",
+      "response_code": 400,
+      "response_time_ms": 15,
+      "attack_type": "XSS",
+      "severity": "MEDIUM",
+      "rule_id": "XSS-001",
+      "rule_description": "Script tags in request body",
+      "mitigation_action": "BLOCKED",
+      "session_id": "sess_mno345pqr678",
+      "geo_location": {
+        "country": "China",
+        "city": "Beijing",
+        "latitude": 39.9042,
+        "longitude": 116.4074
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:05:22.111Z",
+      "source_ip": "203.0.113.45",
+      "user_agent": "sqlmap/1.6#stable",
+      "request_method": "GET",
+      "request_url": "/api/users?id=1' AND SLEEP(5)--",
+      "request_body": null,
+      "response_code": 500,
+      "response_time_ms": 5023,
+      "attack_type": "SQL_INJECTION_TIME_BASED",
+      "severity": "CRITICAL",
+      "rule_id": "SQLI-003",
+      "rule_description": "Time-based SQL injection detection",
+      "mitigation_action": "BLOCKED_AND_ALERTED",
+      "session_id": "sess_stu901vwx234",
+      "geo_location": {
+        "country": "United States",
+        "city": "San Francisco",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:10:33.222Z",
+      "source_ip": "198.51.100.23",
+      "user_agent": "Python-urllib/3.10",
+      "request_method": "POST",
+      "request_url": "/api/login",
+      "request_body": "username=admin&password=' UNION SELECT username, password FROM users--",
+      "response_code": 403,
+      "response_time_ms": 10,
+      "attack_type": "SQL_INJECTION_UNION",
+      "severity": "HIGH",
+      "rule_id": "SQLI-004",
+      "rule_description": "UNION-based SQL injection",
+      "mitigation_action": "BLOCKED",
+      "session_id": "sess_yza567bcd890",
+      "geo_location": {
+        "country": "Germany",
+        "city": "Berlin",
+        "latitude": 52.52,
+        "longitude": 13.405
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:15:44.333Z",
+      "source_ip": "192.0.2.67",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+      "request_method": "GET",
+      "request_url": "/api/data/download?file=../../../etc/passwd",
+      "request_body": null,
+      "response_code": 403,
+      "response_time_ms": 7,
+      "attack_type": "PATH_TRAVERSAL",
+      "severity": "HIGH",
+      "rule_id": "PT-001",
+      "rule_description": "Directory traversal attempt",
+      "mitigation_action": "BLOCKED",
+      "session_id": "sess_efg123hij456",
+      "geo_location": {
+        "country": "China",
+        "city": "Beijing",
+        "latitude": 39.9042,
+        "longitude": 116.4074
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:20:55.444Z",
+      "source_ip": "203.0.113.45",
+      "user_agent": "sqlmap/1.6#stable",
+      "request_method": "POST",
+      "request_url": "/api/search",
+      "request_body": "{\"query\": \"test' OR EXISTS(SELECT * FROM information_schema.tables)--\"}",
+      "response_code": 500,
+      "response_time_ms": 18,
+      "attack_type": "SQL_INJECTION",
+      "severity": "HIGH",
+      "rule_id": "SQLI-005",
+      "rule_description": "Database schema enumeration attempt",
+      "mitigation_action": "BLOCKED_AND_ALERTED",
+      "session_id": "sess_klm789nop012",
+      "geo_location": {
+        "country": "United States",
+        "city": "San Francisco",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:25:01.555Z",
+      "source_ip": "198.51.100.23",
+      "user_agent": "Python-urllib/3.10",
+      "request_method": "GET",
+      "request_url": "/api/users",
+      "request_params": {
+        "limit": "100",
+        "offset": "0",
+        "sort": "username; DROP TABLE users--"
+      },
+      "response_code": 403,
+      "response_time_ms": 9,
+      "attack_type": "SQL_INJECTION",
+      "severity": "CRITICAL",
+      "rule_id": "SQLI-006",
+      "rule_description": "SQL DROP command injection",
+      "mitigation_action": "BLOCKED",
+      "session_id": "sess_pqr345stu678",
+      "geo_location": {
+        "country": "Germany",
+        "city": "Berlin",
+        "latitude": 52.52,
+        "longitude": 13.405
+      }
+    },
+    {
+      "timestamp": "2024-11-01T14:28:12.666Z",
+      "source_ip": "192.0.2.67",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/91.0.4472.124",
+      "request_method": "POST",
+      "request_url": "/api/payments/process",
+      "request_body": "amount=1000&currency=USD&csrf_token=12345",
+      "response_code": 200,
+      "response_time_ms": 45,
+      "attack_type": "CSRF_ATTEMPT",
+      "severity": "MEDIUM",
+      "rule_id": "CSRF-001",
+      "rule_description": "Possible CSRF token reuse",
+      "mitigation_action": "LOGGED_ONLY",
+      "session_id": "sess_vwx901yza234",
+      "geo_location": {
+        "country": "China",
+        "city": "Beijing",
+        "latitude": 39.9042,
+        "longitude": 116.4074
+      }
+    }
+  ],
+  "summary": {
+    "total_requests": 156,
+    "blocked_requests": 142,
+    "allowed_requests": 14,
+    "attack_types": {
+      "SQL_INJECTION": 89,
+      "XSS": 34,
+      "PATH_TRAVERSAL": 12,
+      "CSRF_ATTEMPT": 8,
+      "BRUTE_FORCE": 13
+    },
+    "source_countries": {
+      "United States": 67,
+      "Germany": 45,
+      "China": 32,
+      "Russia": 7,
+      "Brazil": 5
+    },
+    "peak_time": "2024-11-01T14:05:00Z",
+    "requests_per_minute": 5.2
+  }
+}
