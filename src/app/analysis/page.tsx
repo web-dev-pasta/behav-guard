@@ -5,16 +5,14 @@ import SessionComparison from "@/components/analysis/session-comparison";
 
 function AnalysisPage() {
   return (
-    <>
-      <section className="my-10 px-4">
-        <div className="page-container">
-          <SessionAnalysis />
-          <BehaviouralTimeline />
-          <EndpointSection />
-          <SessionComparison />
-        </div>
-      </section>
-    </>
+    <section className="my-10 px-4">
+      <div className="page-container">
+        <SessionAnalysis />
+        <BehaviouralTimeline />
+        <EndpointSection />
+        <SessionComparison />
+      </div>
+    </section>
   );
 }
 

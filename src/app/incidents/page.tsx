@@ -1,9 +1,13 @@
-import React from 'react'
+import IncidentsOverview from "@/components/incidents/incidents-overview";
 
 function IncidentsPage() {
   return (
-    <div>IncidentsPage</div>
-  )
+    <section className="my-10 px-4">
+      <div className="page-container">
+        <IncidentsOverview />
+      </div>
+    </section>
+  );
 }
 
-export default IncidentsPage
+export default IncidentsPage;

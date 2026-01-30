@@ -11,6 +11,9 @@ import {
   Activity,
   TrendingUp,
   Zap,
+  AlertTriangle,
+  Flame,
+  Clock,
 } from "lucide-react";
 
 export const navigationTabs = (params: string) => [
@@ -613,4 +616,39 @@ export const endpointData = [
   { endpoint: "/api/login", normal: 45, suspicious: 2, current: 47 },
   { endpoint: "/admin/dashboard", normal: 5, suspicious: 78, current: 83 },
   { endpoint: "/api/payments", normal: 35, suspicious: 3, current: 38 },
+];
+
+export const stats = [
+  {
+    label: "Open Incidents",
+    value: "3",
+    valueClass: "text-white",
+    icon: AlertTriangle,
+    iconBg: "bg-[#FF3366]/20",
+    iconColor: "text-[#FF3366]",
+  },
+  {
+    label: "Critical",
+    value: "1",
+    valueClass: "text-[#FF3366]",
+    icon: Flame,
+    iconBg: "bg-[#FF3366]/20",
+    iconColor: "text-[#FF3366]",
+  },
+  {
+    label: "Investigating",
+    value: "2",
+    valueClass: "text-[#FFB800]",
+    icon: Search,
+    iconBg: "bg-[#FFB800]/20",
+    iconColor: "text-[#FFB800]",
+  },
+  {
+    label: "Avg Resolution Time",
+    value: "4.2h",
+    valueClass: "text-white",
+    icon: Clock,
+    iconBg: "bg-white/10",
+    iconColor: "text-white",
+  },
 ];
